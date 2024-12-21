@@ -131,7 +131,7 @@
                                     onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                     <i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i>
-                                    <span class="align-middle" data-key="t-logout">{{ __('Logout') }} ></span></a>
+                                    <span class="align-middle" data-key="t-logout"> {{ __('Logout') }} </span></a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
                                 </form>

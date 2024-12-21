@@ -5,7 +5,7 @@
 <head>
 
     <meta charset="utf-8" />
-    <title>Garment | Tracking System - Admin Panel</title>
+    <title>Services Central Pro |  Admin Panel</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="admin" name="description" />
     <meta content="dream coderz" name="author" />
