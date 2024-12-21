@@ -36,7 +36,7 @@
                         </button>
 
                         <!-- App Search-->
-                       
+
                     </div>
 
                     <div class="d-flex align-items-center">
@@ -63,11 +63,11 @@
                             </div>
                         </div>
 
-                    
 
-                    
 
-                       
+
+
+
 
                         <div class="ms-1 header-item d-none d-sm-flex">
                             <button type="button"
@@ -84,7 +84,7 @@
                             </button>
                         </div>
 
-                      
+
 
                         <div class="dropdown ms-sm-3 header-item topbar-user">
                             <button type="button" class="btn shadow-none" id="page-header-user-dropdown"
@@ -95,7 +95,7 @@
                                         alt="Header Avatar">
                                     <span class="text-start ms-xl-2">
                                         <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">Administrator
-                                            </span>
+                                        </span>
                                         <span
                                             class="d-none d-xl-block ms-1 fs-12 text-muted user-name-sub-text">Manager</span>
                                     </span>
@@ -127,9 +127,15 @@
                                 <a class="dropdown-item" href="{{ url('/logout') }}"><i
                                         class="mdi mdi-lock text-muted fs-16 align-middle me-1"></i> <span
                                         class="align-middle">Lock screen</span></a>
-                                <a class="dropdown-item" href="{{ url('/logout') }}"><i
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }} ><i
                                         class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span
                                         class="align-middle" data-key="t-logout">Logout</span></a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
                             </div>
                         </div>
                     </div>
