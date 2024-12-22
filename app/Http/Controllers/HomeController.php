@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $user = Auth::user();
+
+        // Check if the user is an admin
+        if ($user && $user->role === 'admin') {
+            return redirect()->route('admin.dashboard'); // Redirect to admin dashboard
+        }
+
+        // If not an admin, redirect to the tenant dashboard
+        return redirect()->route('tenant.dashboard'); // Redirect to tenant dashboard
     }
 }
