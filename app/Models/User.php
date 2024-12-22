@@ -24,6 +24,7 @@ class User extends Authenticatable
         'mobile_number',
         'company_name',
         'password',
+        'status',
     ];
 
     /**
