@@ -9,7 +9,8 @@ class SubscriptionController extends Controller
 {
     public function index()
     {
-        $subscriptions = auth()->user()->tenant->subscriptions;
+        //$subscriptions = auth()->user()->tenant->subscriptions;
+        $subscriptions='';
         return view('tenant.subscriptions.index', compact('subscriptions'));
     }
 
