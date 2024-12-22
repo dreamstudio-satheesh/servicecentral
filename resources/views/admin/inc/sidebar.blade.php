@@ -32,78 +32,98 @@
                     </div>
                     <ul class="navbar-nav" id="navbar-nav">
                         <li class="menu-title"><span data-key="t-menu">Menu</span></li>
+
+                        <!-- Dashboard -->
                         <li class="nav-item">
                             <a class="nav-link menu-link" href="#sidebarDashboards" data-bs-toggle="collapse"
                                 role="button" aria-expanded="false" aria-controls="sidebarDashboards">
-                                <i class="mdi mdi-speedometer"></i> <span data-key="t-dashboards">Dashboards</span>
+                                <i class="mdi mdi-speedometer"></i> <span data-key="t-dashboards">Dashboard</span>
                             </a>
                             <div class="collapse menu-dropdown" id="sidebarDashboards">
                                 <ul class="nav nav-sm flex-column">
                                     <li class="nav-item">
-                                        <a href="{{ url('home') }}" class="nav-link" data-key="t-analytics">
-                                            Home </a>
+                                        <a href="{{ url('admin/dashboard') }}" class="nav-link" data-key="t-overview">
+                                            View Statistics </a>
                                     </li>
-                                  
                                 </ul>
                             </div>
-                        </li> <!-- end Dashboard Menu -->
-
-                        <li class="nav-item">
-                            <a href="{{ url('assign-bundle') }}" class="nav-link" data-key="t-calendar">
-                                <i class="mdi mdi-sticker-text-outline"></i> <span>Assign Bundle to Line </span>
-                            </a>
                         </li>
 
+                        <!-- Manage Tenants -->
                         <li class="nav-item">
-                            <a href="{{ url('garment-tracking') }}" class="nav-link" data-key="t-calendar">
-                                <i class="mdi mdi-sticker-text-outline"></i> <span>Scan Garment</span>
+                            <a class="nav-link menu-link" href="#sidebarTenants" data-bs-toggle="collapse"
+                                role="button" aria-expanded="false" aria-controls="sidebarTenants">
+                                <i class="mdi mdi-account-multiple-outline"></i> <span data-key="t-tenants">Manage Tenants</span>
                             </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link menu-link" href="#sidebarApps" data-bs-toggle="collapse"
-                                role="button" aria-expanded="false" aria-controls="sidebarApps">
-                                <i class="mdi mdi-view-grid-plus-outline"></i> <span data-key="t-apps">Master</span>
-                            </a>
-                            <div class="collapse menu-dropdown" id="sidebarApps">
+                            <div class="collapse menu-dropdown" id="sidebarTenants">
                                 <ul class="nav nav-sm flex-column">
-                                   
                                     <li class="nav-item">
-                                        <a href="{{ url('checkpoints') }}" class="nav-link" data-key="t-calendar"> Checkpoints 
-                                        </a>
+                                        <a href="{{ url('admin/tenants') }}" class="nav-link" data-key="t-list">
+                                            List All Tenants </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="{{ url('bundles') }}" class="nav-link" data-key="t-calendar"> Bundles 
-                                        </a>
+                                        <a href="{{ url('admin/tenants/create') }}" class="nav-link" data-key="t-create">
+                                            Create New Tenant </a>
                                     </li>
-                                   
-                                   
                                 </ul>
                             </div>
                         </li>
 
+                        <!-- Subscriptions -->
                         <li class="nav-item">
-                            <a class="nav-link menu-link" href="#sidebarApps" data-bs-toggle="collapse"
-                                role="button" aria-expanded="false" aria-controls="sidebarApps">
-                                <i class="mdi mdi-sticker-text-outline"></i> <span data-key="t-apps">Reports</span>
+                            <a class="nav-link menu-link" href="#sidebarSubscriptions" data-bs-toggle="collapse"
+                                role="button" aria-expanded="false" aria-controls="sidebarSubscriptions">
+                                <i class="mdi mdi-cash"></i> <span data-key="t-subscriptions">Subscriptions</span>
                             </a>
-                            <div class="collapse menu-dropdown" id="sidebarApps">
+                            <div class="collapse menu-dropdown" id="sidebarSubscriptions">
                                 <ul class="nav nav-sm flex-column">
-                                   
                                     <li class="nav-item">
-                                        <a href="{{ url('reports/hourly') }}" class="nav-link" data-key="t-calendar"> Hourly 
-                                        </a>
+                                        <a href="{{ url('admin/subscriptions') }}" class="nav-link" data-key="t-manage">
+                                            View Subscriptions </a>
                                     </li>
-                                  
-                                   
-                                   
+                                    <li class="nav-item">
+                                        <a href="{{ url('admin/trials/manage') }}" class="nav-link" data-key="t-expire">
+                                            Manage Trial Periods </a>
+                                    </li>
                                 </ul>
                             </div>
                         </li>
-                    <!-- end  Menu -->
 
-                      
+                        <!-- Invoices -->
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="#sidebarInvoices" data-bs-toggle="collapse"
+                                role="button" aria-expanded="false" aria-controls="sidebarInvoices">
+                                <i class="mdi mdi-receipt"></i> <span data-key="t-invoices">Invoices</span>
+                            </a>
+                            <div class="collapse menu-dropdown" id="sidebarInvoices">
+                                <ul class="nav nav-sm flex-column">
+                                    <li class="nav-item">
+                                        <a href="{{ url('admin/invoices') }}" class="nav-link" data-key="t-view">
+                                            View Invoices </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{ url('admin/invoices/create') }}" class="nav-link" data-key="t-generate">
+                                            Generate Invoice </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <!-- Notifications -->
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="{{ url('admin/notifications') }}" data-key="t-notifications">
+                                <i class="mdi mdi-bell-outline"></i> <span>Notifications</span>
+                            </a>
+                        </li>
+
+                        <!-- Settings -->
+                        <li class="nav-item">
+                            <a href="{{ url('admin/settings') }}" class="nav-link" data-key="t-settings">
+                                <i class="mdi mdi-cog-outline"></i> <span>Settings</span>
+                            </a>
+                        </li>
                     </ul>
+
                 </div>
                 <!-- Sidebar -->
             </div>
