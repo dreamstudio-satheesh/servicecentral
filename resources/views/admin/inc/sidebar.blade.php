@@ -30,6 +30,7 @@
 
                     <div id="two-column-menu">
                     </div>
+                    @if(Auth::check() && Auth::user()->role === 'admin')
                     <ul class="navbar-nav" id="navbar-nav">
                         <li class="menu-title"><span data-key="t-menu">Menu</span></li>
 
@@ -123,6 +124,7 @@
                             </a>
                         </li>
                     </ul>
+                    @endif
 
                 </div>
                 <!-- Sidebar -->
