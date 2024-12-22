@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Setting;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -9,15 +10,13 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class SettingFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
-    public function definition(): array
+    protected $model = Setting::class;
+
+    public function definition()
     {
         return [
-            //
+            'key' => $this->faker->unique()->word,
+            'value' => $this->faker->sentence,
         ];
     }
 }

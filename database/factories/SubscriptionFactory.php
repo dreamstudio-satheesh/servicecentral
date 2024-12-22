@@ -2,6 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Models\Plan;
+use App\Models\Tenant;
+use App\Models\Subscription;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -9,15 +12,16 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class SubscriptionFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
-    public function definition(): array
+    protected $model = Subscription::class;
+
+    public function definition()
     {
         return [
-            //
+            'tenant_id' => Tenant::factory(),
+            'plan_id' => Plan::factory(),
+            'start_date' => $this->faker->date,
+            'end_date' => $this->faker->date,
+            'status' => $this->faker->randomElement(['active', 'inactive', 'cancelled']),
         ];
     }
 }
