@@ -19,6 +19,9 @@ return new class extends Migration
             $table->date('end_date')->nullable();
             $table->enum('status', ['active', 'inactive', 'cancelled'])->default('active');
             $table->timestamps();
+
+            // Foreign key
+            $table->foreign('tenant_id')->references('id')->on('tenants')->onDelete('cascade');
         });
     }
 

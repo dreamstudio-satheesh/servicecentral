@@ -19,6 +19,9 @@ return new class extends Migration
             $table->string('payment_method');
             $table->enum('status', ['success', 'failed', 'pending'])->default('pending');
             $table->timestamps();
+
+            // Foreign key
+            $table->foreign('subscription_id')->references('id')->on('subscriptions')->onDelete('cascade');
         });
     }
 
