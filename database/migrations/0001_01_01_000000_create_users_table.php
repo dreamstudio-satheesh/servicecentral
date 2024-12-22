@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('company_name')->nullable(false); 
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->enum('role', ['admin', 'tenant'])->default('tenant');
             $table->rememberToken();
             $table->timestamps();
         });

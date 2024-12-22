@@ -17,7 +17,7 @@ class AdminSeeder extends Seeder
             ['email' => 'admin@example.com'],
             [
                 'name' => 'Super Admin',
-                'email' => 'admin@example.com',
+                'email' => 'admin@app.com',
                 'mobile_number' => '1234567890',
                 'company_name' => 'ServiceCentralPro',
                 'password' => bcrypt('password'), // Use a secure password in production
