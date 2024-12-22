@@ -56,7 +56,7 @@
                         @endif
                     </header>
 
-                    <main class="mt-6">
+                    <main class="mt-6" style="min-height: 800px;">
                         
                     </main>
 
