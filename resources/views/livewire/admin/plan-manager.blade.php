@@ -27,7 +27,7 @@
                                 <td>${{ $plan->price }}</td>
                                 <td>
                                     <button wire:click="edit({{ $plan->id }})" class="btn btn-primary btn-sm">Edit</button>
-                                    <button x-data="{ planId: {{ $plan->id }} }" @click="confirmDeletion(planId)" class="btn btn-danger btn-sm">Delete</button>
+                                    <button wire:click="delete({{ $plan->id }})" class="btn btn-danger btn-sm">Delete</button>
                                 </td>
                             </tr>
                             @empty
@@ -82,28 +82,5 @@
         </div>
     </div>
 
-    @push('scripts')
-    <script>
-        function confirmDeletion(planId) {
-            Swal.fire({
-                title: 'Are you sure?',
-                text: "You won't be able to revert this!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonText: 'Yes, delete it!',
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    @this.call('delete', planId);
-                    Swal.fire('Deleted!', 'Plan has been deleted.', 'success');
-                }
-            });
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            window.addEventListener('show-toastr', event => {
-                toastr.success(event.detail.message);
-            });
-        });
-    </script>
-    @endpush
+   
 </div>
