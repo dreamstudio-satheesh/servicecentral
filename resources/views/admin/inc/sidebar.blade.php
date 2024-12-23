@@ -50,20 +50,24 @@
                             </div>
                         </li>
 
-                        <!-- Manage Tenants -->
+                        <!-- Manage Stores -->
                         <li class="nav-item">
-                            <a class="nav-link menu-link" href="#sidebarTenants" data-bs-toggle="collapse"
-                                role="button" aria-expanded="false" aria-controls="sidebarTenants">
-                                <i class="mdi mdi-account-multiple-outline"></i> <span data-key="t-tenants">Manage Tenants</span>
+                            <a class="nav-link menu-link" href="#sidebarStores" data-bs-toggle="collapse"
+                                role="button" aria-expanded="false" aria-controls="sidebarStores">
+                                <i class="mdi mdi-account-multiple-outline"></i> <span data-key="t-tenants">Manage Stores</span>
                             </a>
-                            <div class="collapse menu-dropdown" id="sidebarTenants">
+                            <div class="collapse menu-dropdown" id="sidebarStores">
                                 <ul class="nav nav-sm flex-column">
-                                    <li class="nav-item">
-                                        <a href="{{ url('admin/tenants') }}" class="nav-link" data-key="t-list">
-                                            List All Tenants </a>
+                                <li class="nav-item">
+                                        <a href="{{ url('admin/Users') }}" class="nav-link" data-key="t-list">
+                                            Manage Users </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="{{ url('admin/tenants/create') }}" class="nav-link" data-key="t-create">
+                                        <a href="{{ url('admin/stores') }}" class="nav-link" data-key="t-list">
+                                            Store List </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{ url('admin/stores/create') }}" class="nav-link" data-key="t-create">
                                             Create New Tenant </a>
                                     </li>
                                 </ul>
