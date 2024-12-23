@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Livewire\Admin\PlanManager;
+use App\Livewire\Admin\PlanManager;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\TenantController;
 use App\Http\Controllers\Admin\SubscriptionController;
@@ -26,6 +26,6 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'isAdmin'])->group(f
     // Subscription Plans Management
     // Route::resource('/plans', PlanController::class);
 
-
+    Route::get('/plans', PlanManager::class);
 });
 
