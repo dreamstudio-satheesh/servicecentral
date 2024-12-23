@@ -50,8 +50,13 @@ class User extends Authenticatable
         ];
     }
 
-    public function tenants()
+    public function stores()
     {
-        return $this->hasMany(Tenant::class);
+        return $this->hasMany(Store::class);
+    }
+
+    public function notifications()
+    {
+        return $this->hasMany(Notification::class, 'recipient_id');
     }
 }

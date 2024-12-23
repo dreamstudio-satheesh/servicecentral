@@ -12,10 +12,6 @@ class Plan extends Model
 
     protected $fillable = ['name', 'billing_cycle', 'price', 'description'];
 
-    public function tenants()
-    {
-        return $this->hasMany(Tenant::class);
-    }
 
     public function subscriptions()
     {

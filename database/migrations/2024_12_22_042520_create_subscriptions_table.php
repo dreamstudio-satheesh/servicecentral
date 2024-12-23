@@ -13,15 +13,17 @@ return new class extends Migration
     {
         Schema::create('subscriptions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('tenant_id')->constrained('tenants')->onDelete('cascade');
+            $table->foreignId('store_id')->constrained('stores')->onDelete('cascade');
             $table->foreignId('plan_id')->constrained('plans')->onDelete('cascade');
-            $table->date('start_date');
-            $table->date('end_date')->nullable();
+            $table->date('plan_start_date');
+            $table->date('plan_end_date')->nullable();
             $table->enum('status', ['active', 'inactive', 'cancelled'])->default('active');
             $table->timestamps();
 
             // Foreign key
-            $table->foreign('tenant_id')->references('id')->on('tenants')->onDelete('cascade');
+            $table->foreign('store_id')->references('id')->on('stores')->onDelete('cascade');            
+            $table->foreign('plan_id')->references('id')->on('plans')->onDelete('cascade');
+
         });
     }
 

@@ -11,19 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tenants', function (Blueprint $table) {
+        Schema::create('stores', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('subdomain')->unique();
-            $table->string('db_name')->unique();
-            $table->foreignId('plan_id')->constrained('plans')->onDelete('cascade');
+            $table->string('database_name')->unique();
+            $table->unsignedBigInteger('plan_id');
+            $table->foreignId('user_id')
+                  ->constrained('users')
+                  ->onDelete('cascade');
+            $table->enum('status', ['Trial', 'Active', 'Suspended', 'Cancelled']);
             $table->date('trial_start_date')->nullable();
             $table->date('trial_end_date')->nullable();
-            $table->enum('status', ['trial', 'active', 'expired'])->default('trial');
             $table->date('next_billing_date')->nullable();
-            $table->foreignId('user_id') // Foreign key linking to users table
-                ->constrained('users')
-                ->onDelete('cascade'); // Delete tenant if the user is deleted
             $table->timestamps();
         });
     }
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tenants');
+        Schema::dropIfExists('stores');
     }
 };

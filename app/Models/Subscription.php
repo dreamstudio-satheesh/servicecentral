@@ -10,11 +10,11 @@ class Subscription extends Model
     /** @use HasFactory<\Database\Factories\SubscriptionFactory> */
     use HasFactory;
 
-    protected $fillable = ['tenant_id', 'plan_id', 'start_date', 'end_date', 'status'];
+    protected $fillable = ['store_id', 'plan_id', 'start_date', 'end_date', 'status'];
 
-    public function tenant()
+    public function store()
     {
-        return $this->belongsTo(Tenant::class);
+        return $this->belongsTo(Store::class);
     }
 
     public function plan()
