@@ -86,6 +86,10 @@
                                         <a href="{{ url('admin/trials/manage') }}" class="nav-link" data-key="t-expire">
                                             Manage Trial Periods </a>
                                     </li>
+                                    <li class="nav-item">
+                                        <a href="{{ url('admin/plans') }}" class="nav-link" data-key="t-manage">
+                                            Manage Plans </a>
+                                    </li>
                                 </ul>
                             </div>
                         </li>
