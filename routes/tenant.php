@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Tenant\DashboardController;
 use App\Http\Controllers\Tenant\SubscriptionController;
 
-Route::prefix('tenant')->name('tenent.')->middleware(['auth'])->group(function () {
+Route::prefix('tenant')->name('tenant.')->middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     // Subscription Management
