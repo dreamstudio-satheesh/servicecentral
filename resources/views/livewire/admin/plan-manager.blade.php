@@ -64,7 +64,7 @@
                             </select>
                             @error('billing_cycle') <span class="text-danger">{{ $message }}</span> @enderror
                         </div>
-                        
+
                         <div class="form-group">
                             <label>Price</label>
                             <input type="number" step="0.01" class="form-control" wire:model="price">
@@ -77,7 +77,7 @@
                             @error('description') <span class="text-danger">{{ $message }}</span> @enderror
                         </div>
 
-                        <div class="form-group">
+                        <div class="pt-5">
                             <button type="submit" class="btn btn-primary">Save</button>
                             <button type="button" wire:click="create" class="btn btn-secondary">Cancel</button>
                         </div>
