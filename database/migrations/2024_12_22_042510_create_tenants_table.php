@@ -21,6 +21,9 @@ return new class extends Migration
             $table->date('trial_end_date')->nullable();
             $table->enum('status', ['trial', 'active', 'expired'])->default('trial');
             $table->date('next_billing_date')->nullable();
+            $table->foreignId('user_id') // Foreign key linking to users table
+                ->constrained('users')
+                ->onDelete('cascade'); // Delete tenant if the user is deleted
             $table->timestamps();
         });
     }
