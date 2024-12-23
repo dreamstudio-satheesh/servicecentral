@@ -50,8 +50,8 @@ class User extends Authenticatable
         ];
     }
 
-    public function tenant()
+    public function tenants()
     {
-        return $this->belongsTo(Tenant::class);
+        return $this->hasMany(Tenant::class);
     }
 }
