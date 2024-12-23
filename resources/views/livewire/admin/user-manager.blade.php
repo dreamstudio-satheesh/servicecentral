@@ -94,8 +94,12 @@
                             <input type="password" class="form-control" wire:model="password">
                             @error('password') <span class="text-danger">{{ $message }}</span> @enderror
                         </div>
-                        <button type="submit" class="btn btn-primary">Save</button>
-                        <button type="button" wire:click="create" class="btn btn-secondary">Cancel</button>
+
+                        <div class="pt-3">
+                            <button type="submit" class="btn btn-primary">Save</button>
+                            <button type="button" wire:click="create" class="btn btn-secondary">Cancel</button>
+                        </div>
+
                     </form>
                 </div>
             </div>

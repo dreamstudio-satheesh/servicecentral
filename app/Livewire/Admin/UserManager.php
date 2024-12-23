@@ -57,6 +57,8 @@ class UserManager extends Component
 
     public function store()
     {
+        $this->rules['email'] = 'required|email|unique:users,email,' . $this->user_id;
+        
         $this->validate();
 
         $data = [
