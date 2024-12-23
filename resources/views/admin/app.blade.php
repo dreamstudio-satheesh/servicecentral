@@ -24,6 +24,11 @@
     <link href="{{ assets('/assets/css/custom.min.css') }}" rel="stylesheet" type="text/css" />
 
     @livewireStyles
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" />
+
+    @stack('styles')
+
 </head>
 
 <body>
@@ -870,6 +875,8 @@
 
     <!-- App js -->
     <script src="{{ assets('/assets/js/app.js') }}"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
     @livewireScripts
 </body>

@@ -93,7 +93,7 @@
                 confirmButtonText: 'Yes, delete it!',
             }).then((result) => {
                 if (result.isConfirmed) {
-                    // @this.call('delete', planId);
+                    @this.call('delete', planId);
                     Swal.fire('Deleted!', 'Plan has been deleted.', 'success');
                 }
             });
