@@ -59,7 +59,7 @@
                             <div class="collapse menu-dropdown" id="sidebarStores">
                                 <ul class="nav nav-sm flex-column">
                                 <li class="nav-item">
-                                        <a href="{{ url('admin/Users') }}" class="nav-link" data-key="t-list">
+                                        <a href="{{ url('admin/users') }}" class="nav-link" data-key="t-list">
                                             Manage Users </a>
                                     </li>
                                     <li class="nav-item">
