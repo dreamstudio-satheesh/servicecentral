@@ -19,11 +19,6 @@ return new class extends Migration
             $table->date('plan_end_date')->nullable();
             $table->enum('status', ['active', 'inactive', 'cancelled'])->default('active');
             $table->timestamps();
-
-            // Foreign key
-            $table->foreign('store_id')->references('id')->on('stores')->onDelete('cascade');            
-            $table->foreign('plan_id')->references('id')->on('plans')->onDelete('cascade');
-
         });
     }
 
