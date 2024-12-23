@@ -27,7 +27,5 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'isAdmin'])->group(f
     // Route::resource('/plans', PlanController::class);
 
 
-    Route::get('/admin/plans', PlanManager::class)->name('plans')->middleware(['auth', 'isAdmin']);
-
 });
 
