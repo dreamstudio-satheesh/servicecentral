@@ -26,6 +26,8 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'isAdmin'])->group(f
     // Subscription Plans Management
     // Route::resource('/plans', PlanController::class);
 
-    Route::get('/plans', PlanManager::class);
+
+    Route::get('/admin/plans', PlanManager::class)->name('plans')->middleware(['auth', 'isAdmin']);
+
 });
 
