@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Livewire\Admin\PlanManager;
 use App\Http\Controllers\Admin\PlanController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\TenantController;
@@ -24,6 +25,8 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'isAdmin'])->group(f
     Route::post('/subscriptions/assign-trial', [SubscriptionController::class, 'assignTrial'])->name('subscriptions.assignTrial');
     
     // Subscription Plans Management
-     Route::resource('/plans', PlanController::class);
+    // Route::resource('/plans', PlanController::class);
+
+    Route::get('/plans', PlanManager::class);
 });
 
