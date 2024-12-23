@@ -77,7 +77,7 @@
                             @error('description') <span class="text-danger">{{ $message }}</span> @enderror
                         </div>
 
-                        <div class="pt-5">
+                        <div class="pt-3">
                             <button type="submit" class="btn btn-primary">Save</button>
                             <button type="button" wire:click="create" class="btn btn-secondary">Cancel</button>
                         </div>
