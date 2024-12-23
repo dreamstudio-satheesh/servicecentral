@@ -2,7 +2,7 @@
 
 @section('content')
 <div>
-    <form action="{{ route('plans.update', $plan->id) }}" method="POST">
+    <form action="{{ route('admin.plans.update', $plan->id) }}" method="POST">
         @csrf
         @method('PUT')
         <label>Name</label>

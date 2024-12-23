@@ -2,7 +2,7 @@
 
 @section('content')
 <div>
-    <form action="{{ route('plans.store') }}" method="POST">
+    <form action="{{ route('admin.plans.store') }}" method="POST">
         @csrf
         <label>Name</label>
         <input type="text" name="name" required>

@@ -2,7 +2,7 @@
 
 @section('content')
 <div>
-    <a href="{{ route('plans.create') }}">Create New Plan</a>
+    <a href="{{ route('admin.plans.create') }}">Create New Plan</a>
     <table>
         <thead>
             <tr>
