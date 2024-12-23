@@ -11,7 +11,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'isAdmin'])->group(f
     Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
 
     // User Management
-    Route::get('/users', [UserManager::class, 'index'])->name('users.index');
+    Route::get('/users', [UserManager::class, 'index'])->name('users');
 
     // Tenant Management
     Route::get('/tenants', [TenantController::class, 'index'])->name('tenants.index');
