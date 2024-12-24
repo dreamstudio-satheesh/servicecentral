@@ -93,7 +93,7 @@ class UserManager extends Component
         $this->company_name = $user->company_name;
         $this->role = $user->role;
         $this->status = $user->status;
-        $this->password = ''; // Password cannot be fetched for security.
+        $this->password = ''; 
     }
 
     public function delete($id)
