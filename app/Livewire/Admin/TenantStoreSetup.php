@@ -4,6 +4,7 @@ namespace App\Livewire\Admin;
 
 use App\Models\Store;
 use App\Models\Plan;
+use App\Models\User;
 use Livewire\Component;
 
 class TenantStoreSetup extends Component
@@ -12,6 +13,7 @@ class TenantStoreSetup extends Component
     public $subdomain;
     public $database_name;
     public $plan_id;
+    public $user_id;
     public $status = 'trial';
     public $trial_start_date;
     public $trial_end_date;
@@ -21,6 +23,7 @@ class TenantStoreSetup extends Component
         'subdomain' => 'required|string|unique:stores,subdomain|max:255',
         'database_name' => 'required|string|unique:stores,database_name|max:255',
         'plan_id' => 'required|exists:plans,id',
+        'user_id' => 'required|exists:users,id',
         'status' => 'required|in:trial,active,suspended,cancelled',
         'trial_start_date' => 'nullable|date',
         'trial_end_date' => 'nullable|date|after_or_equal:trial_start_date',
@@ -35,7 +38,7 @@ class TenantStoreSetup extends Component
             'subdomain' => $this->subdomain,
             'database_name' => $this->database_name,
             'plan_id' => $this->plan_id,
-            'user_id' => auth()->id(), // Assuming the logged-in user creates the store
+            'user_id' => $this->user_id,
             'status' => $this->status,
             'trial_start_date' => $this->trial_start_date,
             'trial_end_date' => $this->trial_end_date,
@@ -49,6 +52,7 @@ class TenantStoreSetup extends Component
     {
         return view('livewire.admin.tenant-store-setup', [
             'plans' => Plan::all(),
+            'users' => User::all(), // Fetch all users for dropdown
         ]);
     }
 }
