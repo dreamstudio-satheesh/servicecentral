@@ -41,7 +41,7 @@ class StoreManager extends Component
 
     public function render()
     {
-        $query = Store::query();
+        $query = Store::with('user')->query();
 
         if (!empty($this->search)) {
             $query->where(function ($q) {

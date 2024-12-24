@@ -14,6 +14,7 @@
                                 <th>No.</th>
                                 <th>Name</th>
                                 <th>Subdomain</th>
+                                <th>User</th>
                                 <th>Status</th>
                                 <th>Actions</th>
                             </tr>
@@ -24,6 +25,7 @@
                                 <td>{{ ($stores->currentPage() - 1) * $stores->perPage() + $loop->index + 1 }}</td>
                                 <td>{{ $store->name }}</td>
                                 <td>{{ $store->subdomain }}</td>
+                                <td>{{ $store->user->name }}</td>
                                 <td>{{ ucfirst($store->status) }}</td>
                                 <td>
                                     <button wire:click="edit({{ $store->id }})" class="btn btn-primary btn-sm">Edit</button>
