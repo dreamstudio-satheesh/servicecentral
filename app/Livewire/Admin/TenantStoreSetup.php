@@ -58,7 +58,7 @@ class TenantStoreSetup extends Component
         if (!empty($this->plan_id)) {
             $plan = Plan::find($this->plan_id);
 
-            dd( $plan->billing_cycle);
+            
 
             // Determine subscription duration based on billing cycle
             $planStartDate = now();
@@ -69,6 +69,8 @@ class TenantStoreSetup extends Component
                 'yearly' => $planStartDate->copy()->addYear(),
                 default => $planStartDate->copy()->addMonth(), // Default to monthly if unknown
             };
+
+            dd($planStartDate);
 
             // Create subscription record
             Subscription::create([
