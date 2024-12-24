@@ -3,6 +3,7 @@
 use App\Livewire\Admin\PlanManager;
 use App\Livewire\Admin\UserManager;
 use Illuminate\Support\Facades\Route;
+use App\Livewire\Admin\TenantStoreSetup;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\TenantController;
 use App\Http\Controllers\Admin\SubscriptionController;
@@ -24,5 +25,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'isAdmin'])->group(f
     
     // Subscription Plans Management
     Route::get('/plans', PlanManager::class);
+
+    Route::get('/tenant-store-setup', TenantStoreSetup::class)->name('tenant.store.setup');
 });
 
