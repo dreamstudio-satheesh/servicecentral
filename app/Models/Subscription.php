@@ -12,6 +12,11 @@ class Subscription extends Model
 
     protected $fillable = ['store_id', 'plan_id', 'plan_start_date', 'plan_end_date', 'status'];
 
+    protected $casts = [
+        'plan_start_date' => 'date',
+        'plan_end_date' => 'date',
+    ];
+
     public function store()
     {
         return $this->belongsTo(Store::class);
