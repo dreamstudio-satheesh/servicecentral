@@ -39,7 +39,7 @@
                                 <div class="form-group">
                                     <label>Plan</label>
                                     <select class="form-control" wire:model="plan_id">
-                                        <option value="">-- Activate Trail  --</option>
+                                        <option value="">Free Trail</option>
                                         @foreach ($plans as $plan)
                                         <option value="{{ $plan->id }}">{{ $plan->name }}</option>
                                         @endforeach
