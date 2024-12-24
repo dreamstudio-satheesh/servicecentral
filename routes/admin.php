@@ -24,7 +24,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'isAdmin'])->group(f
     Route::get('/plans', PlanManager::class);
 
     // Store Management
-    Route::get('/store-manager', StoreManager::class)->name('store.manager');
+    Route::get('/stores', StoreManager::class)->name('store.manager');
     Route::get('/stores/create', TenantStoreSetup::class)->name('store.setup');
 });
 
