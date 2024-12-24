@@ -38,10 +38,17 @@ class StoreManager extends Component
 
     public function render()
     {
-        $stores = Store::where('name', 'like', '%' . $this->search . '%')
-            ->orWhere('subdomain', 'like', '%' . $this->search . '%')
-            ->orderBy('id', 'desc')
-            ->paginate(10);
+        $query = Store::query();
+
+        if (!empty($this->search)) {
+            $query->where(function ($q) {
+                $q->where('name', 'like', '%' . $this->search . '%')
+                    ->orWhere('subdomain', 'like', '%' . $this->search . '%');
+            });
+        }
+
+        $stores = $query->orderBy('id', 'desc')->paginate(10);
+
 
         return view('livewire.admin.store-manager', [
             'stores' => $stores,
