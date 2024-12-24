@@ -61,7 +61,7 @@ class TenantStoreSetup extends Component
             
 
             // Determine subscription duration based on billing cycle
-            $planStartDate = now();
+            $planStartDate = now()->format('Y-m-d'); // Format the start date as YYYY-MM-DD
             $planEndDate = match ($plan->billing_cycle) {
                 'monthly' => $planStartDate->copy()->addMonth()->format('Y-m-d'),
                 'quarterly' => $planStartDate->copy()->addMonths(3)->format('Y-m-d'),
