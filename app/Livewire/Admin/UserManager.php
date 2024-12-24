@@ -30,7 +30,7 @@ class UserManager extends Component
         'company_name' => 'required|string|max:255',
         'role' => 'required|in:admin,tenant',
         'status' => 'required|in:active,pending,suspended',
-        'password' => 'required|min:8',
+        'password' => 'nullable|string|min:8',
     ];
 
     public function render()
