@@ -18,30 +18,32 @@ class StoreManager extends Component
     public $database_name;
     public $plan_id;
     public $user_id;
-    public $status;
+    public $status = 'trial';
     public $trial_start_date;
     public $trial_end_date;
     public $search = '';
 
     protected $paginationTheme = 'bootstrap';
 
-    protected $rules = [
-        'name' => 'required|string|max:255',
-        'subdomain' => 'required|string|unique:stores,subdomain,' . 'store_id',
-        'database_name' => 'required|string|unique:stores,database_name,' . 'store_id',
-        'plan_id' => 'required|exists:plans,id',
-        'user_id' => 'required|exists:users,id',
-        'status' => 'required|in:trial,active,suspended,cancelled',
-        'trial_start_date' => 'nullable|date',
-        'trial_end_date' => 'nullable|date|after_or_equal:trial_start_date',
-    ];
+    protected function rules()
+    {
+        return [
+            'name' => 'required|string|max:255',
+            'subdomain' => 'required|string|unique:stores,subdomain,' . $this->store_id,
+            'database_name' => 'required|string|unique:stores,database_name,' . $this->store_id,
+            'plan_id' => 'required|exists:plans,id',
+            'user_id' => 'required|exists:users,id',
+            'status' => 'required|in:trial,active,suspended,cancelled',
+            'trial_start_date' => 'nullable|date',
+            'trial_end_date' => 'nullable|date|after_or_equal:trial_start_date',
+        ];
+    }
 
     public function render()
     {
         $query = Store::query();
 
         if (!empty($this->search)) {
-            dd($this->search);
             $query->where(function ($q) {
                 $q->where('name', 'like', '%' . $this->search . '%')
                     ->orWhere('subdomain', 'like', '%' . $this->search . '%');
@@ -49,7 +51,6 @@ class StoreManager extends Component
         }
 
         $stores = $query->orderBy('id', 'desc')->paginate(10);
-
 
         return view('livewire.admin.store-manager', [
             'stores' => $stores,
@@ -73,10 +74,11 @@ class StoreManager extends Component
 
     public function store()
     {
+        // Validate dynamically
         $this->validate();
 
         Store::updateOrCreate(
-            ['id' => $this->store_id],
+            ['id' => $this->store_id], // If `store_id` exists, update; otherwise, create
             [
                 'name' => $this->name,
                 'subdomain' => $this->subdomain,
