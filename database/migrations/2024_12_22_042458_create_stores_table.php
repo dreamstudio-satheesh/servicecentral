@@ -20,7 +20,7 @@ return new class extends Migration
             $table->foreignId('user_id')
                   ->constrained('users')
                   ->onDelete('cascade');
-            $table->enum('status', ['Trial', 'Active', 'Suspended', 'Cancelled']);
+            $table->enum('status', ['trial', 'active', 'suspended', 'cancelled']);
             $table->date('trial_start_date')->nullable();
             $table->date('trial_end_date')->nullable();
             $table->date('next_billing_date')->nullable();
