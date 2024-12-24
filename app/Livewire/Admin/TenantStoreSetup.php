@@ -52,7 +52,7 @@ class TenantStoreSetup extends Component
     {
         return view('livewire.admin.tenant-store-setup', [
             'plans' => Plan::all(),
-            'users' => User::all(), // Fetch all users for dropdown
+            'users' => User::where('role', 'tenant')->get(), // Fetch all users for dropdown
         ]);
     }
 }

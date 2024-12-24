@@ -45,7 +45,7 @@ class StoreManager extends Component
 
         return view('livewire.admin.store-manager', [
             'stores' => $stores,
-            'users' => User::all(),
+            'users' => User::where('role', 'tenant')->get(),
             'plans' => Plan::all(),
         ]);
     }
