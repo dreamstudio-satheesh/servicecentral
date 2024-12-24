@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('subdomain')->unique();
             $table->string('database_name')->unique();
-            $table->unsignedBigInteger('plan_id');
+            $table->unsignedBigInteger('plan_id')->nullable();
             $table->foreignId('user_id')
                   ->constrained('users')
                   ->onDelete('cascade');

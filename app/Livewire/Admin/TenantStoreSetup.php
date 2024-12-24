@@ -12,7 +12,7 @@ class TenantStoreSetup extends Component
     public $name;
     public $subdomain;
     public $database_name;
-    public $plan_id;
+    public $plan_id=null;
     public $user_id;
     public $status = 'trial';
     public $trial_start_date;
@@ -22,7 +22,7 @@ class TenantStoreSetup extends Component
         'name' => 'required|string|max:255',
         'subdomain' => 'required|string|unique:stores,subdomain|max:255',
         'database_name' => 'required|string|unique:stores,database_name|max:255',
-        'plan_id' => 'required|exists:plans,id',
+        'plan_id' => 'nullable|exists:plans,id',
         'user_id' => 'required|exists:users,id',
         'status' => 'required|in:trial,active,suspended,cancelled',
         'trial_start_date' => 'nullable|date',
