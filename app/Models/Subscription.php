@@ -10,7 +10,7 @@ class Subscription extends Model
     /** @use HasFactory<\Database\Factories\SubscriptionFactory> */
     use HasFactory;
 
-    protected $fillable = ['store_id', 'plan_id', 'start_date', 'end_date', 'status'];
+    protected $fillable = ['store_id', 'plan_id', 'plan_start_date', 'plan_end_date', 'status'];
 
     public function store()
     {
