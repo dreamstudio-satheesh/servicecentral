@@ -35,10 +35,16 @@ class UserManager extends Component
 
     public function render()
     {
-        $users = User::where('name', 'like', '%' . $this->search . '%')
-            ->orWhere('email', 'like', '%' . $this->search . '%')
-            ->orderBy('id', 'desc')
-            ->paginate(10);
+        
+        $query = User::where('role', 'tenant');
+        if (!empty($this->search)) {
+            $query->where(function ($q) {
+                $q->where('name', 'like', '%' . $this->search . '%')
+                    ->orWhere('email', 'like', '%' . $this->search . '%');
+            });
+        }
+        
+        $users = $query->orderBy('id', 'desc')->paginate(10);
 
         return view('livewire.admin.user-manager', compact('users'));
     }
@@ -58,7 +64,7 @@ class UserManager extends Component
     public function store()
     {
         $this->rules['email'] = 'required|email|unique:users,email,' . $this->user_id;
-        
+
         $this->validate();
 
         $data = [
