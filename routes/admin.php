@@ -5,6 +5,7 @@ use App\Livewire\Admin\UserManager;
 use App\Livewire\Admin\StoreManager;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Admin\TenantStoreSetup;
+use App\Livewire\Admin\SubscriptionManager;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\TenantController;
 use App\Http\Controllers\Admin\SubscriptionController;
@@ -14,8 +15,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'isAdmin'])->group(f
 
 
     // Subscription Management
-    Route::get('/subscriptions', [SubscriptionController::class, 'index'])->name('subscriptions.index');
-    Route::post('/subscriptions/assign-trial', [SubscriptionController::class, 'assignTrial'])->name('subscriptions.assignTrial');
+    Route::get('subscriptions', SubscriptionManager::class)->name('subscription');
 
     // User Management
     Route::get('/users', UserManager::class)->name('users');
