@@ -41,6 +41,7 @@ class StoreManager extends Component
         $query = Store::query();
 
         if (!empty($this->search)) {
+            dd($this->search);
             $query->where(function ($q) {
                 $q->where('name', 'like', '%' . $this->search . '%')
                     ->orWhere('subdomain', 'like', '%' . $this->search . '%');
