@@ -25,8 +25,8 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'isAdmin'])->group(f
     
     // Subscription Plans Management
     Route::get('/plans', PlanManager::class);
-    
 
-    Route::get('/tenant-store-setup', TenantStoreSetup::class)->name('tenant.store.setup');
+
+    Route::get('/stores/create', TenantStoreSetup::class)->name('store.setup');
 });
 

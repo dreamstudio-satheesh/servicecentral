@@ -68,7 +68,7 @@
                                     </li>
                                     <li class="nav-item">
                                         <a href="{{ url('admin/stores/create') }}" class="nav-link" data-key="t-create">
-                                            Create New Tenant </a>
+                                            Create New Store </a>
                                     </li>
                                 </ul>
                             </div>
