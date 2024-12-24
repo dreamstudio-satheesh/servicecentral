@@ -58,6 +58,8 @@ class TenantStoreSetup extends Component
         if (!empty($this->plan_id)) {
             $plan = Plan::find($this->plan_id);
 
+            dd( $plan);
+
             // Determine subscription duration based on billing cycle
             $planStartDate = now();
             $planEndDate = match ($plan->billing_cycle) {
