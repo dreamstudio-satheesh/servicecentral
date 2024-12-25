@@ -18,6 +18,15 @@ class Invoice extends Model
         'due_date',
     ];
 
+    public static function getStatusOptions()
+    {
+        return [
+            'Paid',
+            'Unpaid',
+            'Cancelled',
+        ];
+    }
+
     /**
      * Relationships
      */

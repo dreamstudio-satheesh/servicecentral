@@ -11,6 +11,7 @@
                                 <option value="">-- Filter by Status --</option>
                                 <option value="Paid">Paid</option>
                                 <option value="Unpaid">Unpaid</option>
+                                <option value="Cancelled">Cancelled</option>
                             </select>
                             <input wire:model="filterIssueDate" type="date" class="form-control">
                         </div>
@@ -40,9 +41,17 @@
                                     <td>{{ $invoice->issue_date }}</td>
                                     <td>{{ $invoice->due_date }}</td>
                                     <td>
-                                        @if ($invoice->status === 'Unpaid')
-                                        <button wire:click="markAsPaid({{ $invoice->id }})" class="btn btn-success btn-sm">Mark Paid</button>
-                                        @endif
+                                        <div class="btn-group">
+                                            @if ($invoice->status !== 'Paid')
+                                            <button wire:click="updateInvoiceStatus({{ $invoice->id }}, 'Paid')" class="btn btn-success btn-sm">Mark Paid</button>
+                                            @endif
+                                            @if ($invoice->status !== 'Unpaid')
+                                            <button wire:click="updateInvoiceStatus({{ $invoice->id }}, 'Unpaid')" class="btn btn-warning btn-sm">Mark Unpaid</button>
+                                            @endif
+                                            @if ($invoice->status !== 'Cancelled')
+                                            <button wire:click="updateInvoiceStatus({{ $invoice->id }}, 'Cancelled')" class="btn btn-danger btn-sm">Cancel</button>
+                                            @endif
+                                        </div>
                                     </td>
                                 </tr>
                                 @empty

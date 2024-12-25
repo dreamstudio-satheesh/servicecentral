@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('store_id');
             $table->unsignedBigInteger('plan_id');
             $table->decimal('amount', 10, 2);
-            $table->enum('status', ['Paid', 'Unpaid']);
+            $table->enum('status', ['Paid', 'Unpaid','Cancelled']);
             $table->date('issue_date');
             $table->date('due_date');
             $table->timestamps();

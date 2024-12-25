@@ -37,12 +37,18 @@ class InvoiceManager extends Component
         $this->resetPage();
     }
 
-    public function markAsPaid($id)
+    public function updateInvoiceStatus($id, $status)
     {
         $invoice = Invoice::findOrFail($id);
-        $invoice->update(['status' => 'Paid']);
-        session()->flash('success', 'Invoice marked as Paid.');
+
+        if (in_array($status, Invoice::getStatusOptions())) {
+            $invoice->update(['status' => $status]);
+            session()->flash('success', "Invoice marked as {$status}.");
+        } else {
+            session()->flash('error', 'Invalid status provided.');
+        }
     }
+
 
     public function render()
     {
