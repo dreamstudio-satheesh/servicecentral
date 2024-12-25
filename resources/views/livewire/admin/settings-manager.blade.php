@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header d-flex justify-content-between">
+                    <div class="card-header">
                         <h5>Settings</h5>
                         <input wire:model.debounce.300ms="search" type="text" class="form-control" placeholder="Search Settings...">
                     </div>
