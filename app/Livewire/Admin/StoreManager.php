@@ -2,26 +2,18 @@
 
 namespace App\Livewire\Admin;
 
-use App\Models\Store;
-use App\Models\User;
 use App\Models\Plan;
+use App\Models\User;
+use App\Models\Store;
 use Livewire\Component;
 use Livewire\WithPagination;
+use App\Traits\StoreManagementTrait;
 
 class StoreManager extends Component
 {
-    use WithPagination;
+    use WithPagination, StoreManagementTrait;
 
-    public $store_id;
-    public $name;
-    public $subdomain;
-    public $database_name;
-    public $plan_id;
-    public $user_id;
-    public $status = 'trial';
-    public $trial_start_date;
-    public $trial_end_date;
-    public $search = '';
+    public $store_id, $name, $subdomain, $database_name, $plan_id, $user_id, $status= 'trial', $trial_start_date, $trial_end_date, $search;
 
     protected $paginationTheme = 'bootstrap';
 
@@ -75,21 +67,11 @@ class StoreManager extends Component
     public function store()
     {
         // Validate dynamically
-        $this->validate();
+        $data=$this->validate();
 
-        Store::updateOrCreate(
-            ['id' => $this->store_id], // If `store_id` exists, update; otherwise, create
-            [
-                'name' => $this->name,
-                'subdomain' => $this->subdomain,
-                'database_name' => $this->database_name,
-                'plan_id' => $this->plan_id,
-                'user_id' => $this->user_id,
-                'status' => $this->status,
-                'trial_start_date' => $this->trial_start_date,
-                'trial_end_date' => $this->trial_end_date,
-            ]
-        );
+         $data['store_id'] = $this->store_id;
+
+        $this->createOrUpdateStore($data);
 
         $this->resetInputFields();
         session()->flash('success', $this->store_id ? 'Store Updated Successfully' : 'Store Created Successfully');
