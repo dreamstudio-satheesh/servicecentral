@@ -5,6 +5,7 @@ use App\Livewire\Admin\UserManager;
 use App\Livewire\Admin\StoreManager;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Admin\InvoiceManager;
+use App\Livewire\Admin\SettingsManager;
 use App\Livewire\Admin\TenantStoreSetup;
 use App\Livewire\Admin\SubscriptionManager;
 use App\Http\Controllers\Admin\UserController;
@@ -31,5 +32,8 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'isAdmin'])->group(f
     // Store Management
     Route::get('/stores', StoreManager::class)->name('store.manager');
     Route::get('/stores/create', TenantStoreSetup::class)->name('store.setup');
+
+    // Settings Management
+    Route::get('/settings', SettingsManager::class);
 });
 
