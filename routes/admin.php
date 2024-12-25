@@ -4,6 +4,7 @@ use App\Livewire\Admin\PlanManager;
 use App\Livewire\Admin\UserManager;
 use App\Livewire\Admin\StoreManager;
 use Illuminate\Support\Facades\Route;
+use App\Livewire\Admin\InvoiceManager;
 use App\Livewire\Admin\TenantStoreSetup;
 use App\Livewire\Admin\SubscriptionManager;
 use App\Http\Controllers\Admin\UserController;
@@ -16,6 +17,10 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'isAdmin'])->group(f
 
     // Subscription Management
     Route::get('subscriptions', SubscriptionManager::class)->name('subscription');
+
+    // Invoice Management
+
+    Route::get('/invoices', InvoiceManager::class);
 
     // User Management
     Route::get('/users', UserManager::class)->name('users');
