@@ -13,7 +13,17 @@ return new class extends Migration
     {
         Schema::create('invoices', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('store_id');
+            $table->unsignedBigInteger('plan_id');
+            $table->decimal('amount', 10, 2);
+            $table->enum('status', ['Paid', 'Unpaid']);
+            $table->date('issue_date');
+            $table->date('due_date');
             $table->timestamps();
+
+            $table->foreign('store_id')->references('id')->on('stores')->onDelete('cascade');
+            $table->foreign('plan_id')->references('id')->on('plans')->onDelete('cascade');
+
         });
     }
 

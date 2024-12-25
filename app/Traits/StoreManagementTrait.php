@@ -2,16 +2,17 @@
 
 namespace App\Traits;
 
+use Carbon\Carbon;
 use App\Models\Plan;
 use App\Models\Store;
+use App\Models\Invoice;
 use App\Models\Subscription;
-use Carbon\Carbon;
 
 trait StoreManagementTrait
 {
     public function createOrUpdateStore($data)
     {
-        $isCreating = empty($data['store_id']); 
+        $isCreating = empty($data['store_id']);
 
         // Add trial dates only during creation
         if ($isCreating && $data['status'] === 'trial') {
@@ -63,5 +64,24 @@ trait StoreManagementTrait
         ]);
 
         $store->update(['next_billing_date' => $subscription->plan_end_date]);
+
+        // Generate an invoice for the subscription
+        $this->generateInvoice($store, $plan, $subscription);
+    }
+
+
+    private function generateInvoice($store, $plan, $subscription)
+    {
+        $invoiceAmount = $plan->price;
+
+        // Create an invoice record
+        Invoice::create([
+            'store_id' => $store->id,
+            'plan_id' => $plan->id,
+            'amount' => $invoiceAmount,
+            'status' => 'Unpaid',
+            'issue_date' => Carbon::now()->format('Y-m-d'),
+            'due_date' => Carbon::now()->addDays(7)->format('Y-m-d'), // Example: Payment due in 7 days
+        ]);
     }
 }
